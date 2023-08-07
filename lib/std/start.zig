@@ -595,7 +595,8 @@ pub fn callMain() u8 {
 
 pub fn call_wWinMain() std.os.windows.INT {
     const MAIN_HINSTANCE = @typeInfo(@TypeOf(root.wWinMain)).Fn.params[0].type.?;
-    const hInstance = @as(MAIN_HINSTANCE, @ptrCast(std.os.windows.kernel32.GetModuleHandleW(null).?));
+	const helpInstance: MAIN_HINSTANCE = null;
+    const hInstance = @as(MAIN_HINSTANCE, @ptrCast(helpInstance));
     const lpCmdLine = std.os.windows.kernel32.GetCommandLineW();
 
     // There's no (documented) way to get the nCmdShow parameter, so we're
